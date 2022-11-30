@@ -12,4 +12,10 @@ export class Knight extends Figure {
             : whiteLogo
         this.name = FigureNames.KNIGHT
     }
+
+    canMove(target: Cell): boolean {
+        if (!super.canMove(target))
+            return false
+        return true
+    }
 }

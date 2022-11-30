@@ -20,6 +20,7 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard}) => {
         // Если выбранная ячейка не равняется текущей (нельзя походить туда же, где стоит фигура)
         // Если на выбранную ячейку можно ходить .canMove(для ячейки) --> true
         if(selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
+            // Двигаем фигуру на выбранную ячейку
             selectedCell.moveFigure(cell)
             setSelectedCell(null)
         } else {

@@ -19,7 +19,6 @@ export class Figure {
     name: FigureNames
     id: number
 
-
     constructor(color: Colors, cell: Cell) {
         this.color = color;
         this.cell = cell;
@@ -30,6 +29,11 @@ export class Figure {
     }
 
     canMove(target: Cell): boolean {
+        if(target.figure?.color === this.color)
+            return false
+        if(target.figure?.name === FigureNames.KING)
+            return false
+
         return true
     }
 
