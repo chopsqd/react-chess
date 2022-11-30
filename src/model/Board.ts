@@ -30,6 +30,25 @@ export class Board {
         }
     }
 
+    public getCopyBoard(): Board {
+        const newBoard = new Board()
+        newBoard.cells = this.cells
+        return newBoard
+    }
+
+    // Подсчитываем на какие ячейки может ходить фигура
+    public highlightCells(selectedCell: Cell | null) {
+        // Проходимся по всем ячейкам
+        for (let i = 0; i < this.cells.length; i++) {
+            const row = this.cells[i]
+            for (let j = 0; j < row.length; j++) {
+                // target - куда может походить фигура
+                const target = row[j]
+                target.available = !!selectedCell?.figure?.canMove(target)
+            }
+        }
+    }
+
     public getCell(x: number, y: number) {
         return this.cells[y][x]
     }
